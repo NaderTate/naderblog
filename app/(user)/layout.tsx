@@ -1,4 +1,5 @@
 import "../globals.css";
+import "../styles.scss";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Header from "../components/Header";
@@ -38,7 +39,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + " px-10 max-w-7xl mx-auto"}>
+      <body
+        className={inter.className + " px-10 max-w-7xl mx-auto pt-5 lg:pt-0"}
+      >
         <Providers>
           <Header />
           <Banner />

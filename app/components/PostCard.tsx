@@ -26,7 +26,7 @@ function PostCard({ post }: { post: Post }) {
                   })}{" "}
                 </p>
               </div>
-              <div className="flex flex-col md:flex-row md:gap-y-2 items-center">
+              <div className="flex flex-col md:flex-row gap-2 items-center">
                 {post.categories?.map((category: Category) => (
                   <span
                     key={category._id}

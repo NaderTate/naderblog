@@ -21,8 +21,7 @@ export async function generateMetadata({
 }) {
   try {
     const query = groq`*[_type == "post" && slug.current == $slug][0]{
-    ...,
-    author->,
+    title,description,mainImage,slug,author->,
 
 }`;
     const post: Post = await client.fetch(query, { slug });
@@ -76,7 +75,7 @@ async function page({ params: { slug } }: { params: { slug: string } }) {
   return (
     <div>
       <div className="">
-        <div className="relative min-h-56 flex flex-col md:flex-row justify-between text-dark-blue">
+        <div className="relative min-h-56 flex flex-col md:flex-row justify-between text-dark-blue mb-10">
           <div className="absolute top-0 w-full h-full opacity-10 blur-sm p-10 ">
             <Image
               src={urlFor(post.mainImage).url()}

@@ -5,42 +5,45 @@ import { PiMagnifyingGlassBold } from "react-icons/pi";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import MobileMenu from "./MobileNav";
 
 function Header() {
   const router = useRouter();
   const [searchTerms, setSearchTerms] = React.useState("");
   const navLinks = [
     {
-      name: "Frontend",
+      name: "App router",
       link: "/",
-      query: { category: "frontend" },
+      query: { tag: "app-router" },
     },
     {
       name: "Backend",
       link: "/",
-      query: { category: "backend" },
+      query: { tag: "backend" },
     },
     {
       name: "Beginners guide",
       link: "/",
-      query: { category: "beginners" },
+      query: { tag: "beginners-guide" },
     },
   ];
   return (
     <div>
-      <div className="md:flex justify-between items-center mt-5 hidden ">
+      <div className="lg:flex justify-between items-center mt-5 hidden ">
         <div className="flex gap-10 items-center">
-          <Link href={{ pathname: "/" }}>
-            <div>
-              <Image
-                src="https://res.cloudinary.com/dqkyatgoy/image/upload/v1689069033/nailedit/Frame_2_yrkykb.png"
-                alt="Logo"
-                height={100}
-                width={250}
-                className="object-contain cursor-pointer"
-              />
-            </div>
-          </Link>
+          <div>
+            <Link href={{ pathname: "/" }}>
+              <div>
+                <Image
+                  src="https://res.cloudinary.com/dqkyatgoy/image/upload/v1689069033/nailedit/Frame_2_yrkykb.png"
+                  alt="Logo"
+                  height={100}
+                  width={250}
+                  className="object-contain cursor-pointer"
+                />
+              </div>
+            </Link>
+          </div>
           {navLinks.map((link) => (
             <Link
               className="group text-dark-blue dark:text-super-light-blue transition duration-300"
@@ -84,6 +87,9 @@ function Header() {
           </div>
           <ThemeSwitcher />
         </div>
+      </div>
+      <div className="block lg:hidden">
+        <MobileMenu />
       </div>
     </div>
   );
