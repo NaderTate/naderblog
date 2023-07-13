@@ -5,6 +5,7 @@ import ThemeButton from "./ThemeButton";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { AiOutlineHome } from "react-icons/ai";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerms, setSearchTerms] = useState("");
@@ -51,6 +52,17 @@ function MobileMenu() {
             isMenuOpen ? "closer" : null
           }`}
         />
+      </div>
+      <div>
+        <Link href={{ pathname: "/" }}>
+          <Image
+            src="https://res.cloudinary.com//dqkyatgoy/image/upload/v1689069033/nailedit/Frame_2_yrkykb.png"
+            alt="Logo"
+            height={70}
+            width={150}
+            className="object-cover cursor-pointer m-auto"
+          />
+        </Link>
       </div>
       <nav
         aria-label="Main Nav"
@@ -106,40 +118,6 @@ function MobileMenu() {
               </Link>
             ))}
           </div>
-          {/* <Link className={itemStyle} href={{ pathname: "/" }}>
-            <div>
-              <div className="flex gap-1">
-                <h1>Home</h1>
-                <AiOutlineHome />
-              </div>
-            </div>
-          </Link>
-          <div className={itemStyle}>
-            <h1>Trending </h1>
-
-            <Link
-              href={{ pathname: "/categories/648337b7223afa484880f4fb" }}
-              className=" font-normal  w-full text-center"
-            >
-              Women&apos;s Fashion
-            </Link>
-          </div>
-          <div className={itemStyle}>
-            <h1>Hot Deals</h1>
-            <Link
-              href={{ pathname: "/categories/64835031082e25fade6967c6" }}
-              className=" font-normal  w-full text-center"
-            >
-              Fitness Equimpents
-            </Link>
-            <Link
-              href={{ pathname: "/categories/648349423d5e7e6f8b55811c" }}
-              className=" font-normal w-full text-center"
-            >
-              Pearl Jewelery
-            </Link>
-          </div>
-          <div> </div> */}
           <ThemeButton />
         </div>
       </nav>

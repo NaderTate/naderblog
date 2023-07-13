@@ -8,16 +8,17 @@ function PostCard({ post }: { post: Post }) {
     <div>
       <Link href={`/articles/${post?.slug?.current}`} key={post._id}>
         <div>
-          <div className="relative h-80 w-full">
+          <div className="relative">
             <Image
-              fill
-              className="object-cover rounded-md"
+              width={1069}
+              height={611}
+              className="object-contain rounded-md"
               src={urlFor(post.mainImage).url()}
               alt={post.title}
             />
-            <div className="absolute w-full bottom-0 bg-opacity-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-white p-5 flex justify-between items-center">
+            <div className="absolute w-full bottom-0 bg-opacity-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-white px-5 py-2 flex justify-between items-center">
               <div>
-                <p> {post.title}</p>
+                <p className="line-clamp-1"> {post.title}</p>
                 <p>
                   {new Date(post._createdAt).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -26,14 +27,14 @@ function PostCard({ post }: { post: Post }) {
                   })}{" "}
                 </p>
               </div>
-              <div className="flex flex-col md:flex-row gap-2 items-center">
+              <div className="flex flex-col  md:flex-row gap-2 items-end justify-end">
                 {post.categories?.map((category: Category) => (
-                  <span
+                  <div
                     key={category._id}
-                    className="mr-2 bg-yellow text-dark-blue text-center px-3 py-1 rounded-full text-sm font-semibold"
+                    className="mr-2 bg-yellow text-dark-blue text-center px-3 py-1 rounded-full text-sm font-semibold whitespace-nowrap"
                   >
                     {category.title}
-                  </span>
+                  </div>
                 ))}
               </div>
             </div>

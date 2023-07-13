@@ -26,7 +26,7 @@ export const RichTextComponents = {
       value: { code: string; language: string; filename: string };
     }) => {
       return (
-        <pre className="dark:bg-gray-900 bg-gray-100 p-3 rounded-md overflow-auto ">
+        <pre className="dark:bg-gray-900 bg-gray-100 p-3 my-2 rounded-md overflow-auto ">
           {value.filename && (
             <div className="text-xs text-gray-500">{value.filename}</div>
           )}
@@ -85,6 +85,13 @@ export const RichTextComponents = {
         >
           {children}
         </Link>
+      );
+    },
+    code: ({ children }: any) => {
+      return (
+        <code className="bg-gray-200 dark:bg-slate-700 rounded-md px-1">
+          {children}
+        </code>
       );
     },
   },

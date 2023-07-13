@@ -67,10 +67,13 @@ async function page({ params: { slug } }: { params: { slug: string } }) {
     }`;
   const post: Post = await client.fetch(query, { slug });
   const relatedPosts: Post[] = await client.fetch(
-    groq`*[_type == "post" && count((categories[]->slug.current)[@ in $categories]) > 0 ]{
+    groq`*[_type == "post" && count((categories[]->slug.current)[@ in $categories]) > 0 && slug.current != $slug ]{
         ...,categories[]->,
     } | order(_createdAt desc) [0...3]`,
-    { categories: post.categories.map((category) => category.slug.current) }
+    {
+      categories: post.categories.map((category) => category.slug.current),
+      slug: post.slug.current,
+    }
   );
   return (
     <div>
@@ -87,7 +90,9 @@ async function page({ params: { slug } }: { params: { slug: string } }) {
           <section className="p-5 bg-yellow rounded-md w-full">
             <div className="flex flex-col md:flex-row justify-between gap-y-5">
               <div>
-                <h1 className="text-4xl font-extrabold">{post.title}</h1>
+                <h1 className="text-2xl sm:text-4xl font-extrabold">
+                  {post.title}
+                </h1>
                 <p>
                   {new Date(post._createdAt).toLocaleDateString("en-US", {
                     day: "numeric",
@@ -125,7 +130,9 @@ async function page({ params: { slug } }: { params: { slug: string } }) {
             </div>
           </section>
         </div>
-        <PortableText value={post.body} components={RichTextComponents} />
+        <div className="whitespace-pre-line">
+          <PortableText value={post.body} components={RichTextComponents} />
+        </div>
       </div>
       <h2 className="text-2xl font-bold my-5 sm:my-10">You might also like:</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

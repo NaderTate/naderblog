@@ -35,11 +35,11 @@ function Header() {
             <Link href={{ pathname: "/" }}>
               <div>
                 <Image
-                  src="https://res.cloudinary.com/dqkyatgoy/image/upload/v1689069033/nailedit/Frame_2_yrkykb.png"
+                  src="https://res.cloudinary.com//dqkyatgoy/image/upload/v1689069033/nailedit/Frame_2_yrkykb.png"
                   alt="Logo"
                   height={100}
                   width={250}
-                  className="object-contain cursor-pointer"
+                  className="object-cover cursor-pointer"
                 />
               </div>
             </Link>
