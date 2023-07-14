@@ -82,6 +82,7 @@ function MobileMenu() {
                 }}
               />
               <button
+                aria-label="search"
                 type="submit"
                 onClick={(e) => {
                   e.preventDefault();
