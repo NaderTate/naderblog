@@ -7,13 +7,13 @@ export const RichTextComponents = {
   types: {
     image: ({ value }: any) => {
       return (
-        <div className="w-full md:w-3/4 m-auto my-3">
+        <div className="w-full md:w-3/4 m-auto my-3 ">
           <Image
             width={0}
             height={0}
             sizes="100vw"
-            style={{ width: "100%", height: "auto" }} // optional
-            className="object-contain rounded-md"
+            style={{ width: "100%", height: "auto" }}
+            className="object-contain  max-h-[80vh]"
             src={urlFor(value.asset).url()}
             alt={value.alt}
           />

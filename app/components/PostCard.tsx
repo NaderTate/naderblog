@@ -8,7 +8,7 @@ function PostCard({ post }: { post: Post }) {
     <div>
       <Link href={`/articles/${post?.slug?.current}`} key={post._id}>
         <div>
-          <div className="relative">
+          <div className="relative hover:scale-[1.02] transition-transform shadow-[0px_1px_10px_0px_#667eea]">
             <Image
               width={1069}
               height={611}
