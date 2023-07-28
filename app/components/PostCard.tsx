@@ -19,7 +19,7 @@ function PostCard({ post }: { post: Post }) {
             <div className="absolute w-full bottom-0 bg-opacity-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-white px-5 py-2 flex justify-between items-center">
               <div>
                 <p className="line-clamp-1"> {post.title}</p>
-                <p>
+                <p className="hidden md:block">
                   {new Date(post._createdAt).toLocaleDateString("en-US", {
                     year: "numeric",
                     month: "long",
