@@ -1,5 +1,6 @@
-import { LuArrowLeftCircle } from "react-icons/lu";
 import Link from "next/link";
+import { LuArrowLeftCircle } from "react-icons/lu";
+
 function StudioNavbar(props: any) {
   return (
     <div className="bg-[#101112]">

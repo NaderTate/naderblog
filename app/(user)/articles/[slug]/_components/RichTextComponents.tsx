@@ -1,8 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import urlFor from "@/lib/urlFor";
 import Prism from "prismjs";
+import Link from "next/link";
+import Image from "next/image";
+
+import urlFor from "@/lib/urlFor";
 import "prismjs/themes/prism-coy.css";
+
 export const RichTextComponents = {
   types: {
     image: ({ value }: any) => {
@@ -43,6 +45,7 @@ export const RichTextComponents = {
       );
     },
   },
+
   list: {
     bullet: ({ children }: any) => {
       return <ul className="list-disc">{children}</ul>;
@@ -51,6 +54,7 @@ export const RichTextComponents = {
       return <ol className="list-decimal">{children}</ol>;
     },
   },
+
   block: {
     h1: ({ children }: any) => {
       return <h1 className="text-4xl font-bold">{children}</h1>;
@@ -72,6 +76,7 @@ export const RichTextComponents = {
       );
     },
   },
+
   marks: {
     link: ({ children, value }: any) => {
       const rel = !value.href.startsWith("/")
