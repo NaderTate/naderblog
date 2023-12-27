@@ -5,8 +5,8 @@ import { groq } from "next-sanity";
 import { getCachedClient } from "@/lib/getClient";
 
 export const getPosts = async (
-  tag: string | undefined,
   search: string | undefined,
+  tag: string | undefined,
   preview:
     | {
         token: string | undefined;

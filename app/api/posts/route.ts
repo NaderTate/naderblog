@@ -5,7 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(request: NextRequest) {
   const limit = request.nextUrl.searchParams.get("limit") || 3;
 
-  const postsQuery = groq`*[_type == "post"] | order(_createdAt desc) [${`0...${limit}`}] | {slug, title, "thumbnail": mainImage.asset->url}`;
+  const postsQuery = groq`*[_type == "post"] | {...,categories[]->{title}}| order(_createdAt desc) [${`0...${limit}`}] | {slug, title, "thumbnail": mainImage.asset->url, categories,description
+    
+  }`;
 
   const posts = await getCachedClient()(postsQuery);
 
