@@ -1,7 +1,9 @@
-import { groq } from "next-sanity";
-import { client } from "@/lib/sanity.client";
-import { ImageResponse } from "next/og";
 import urlFor from "@/lib/urlFor";
+import { groq } from "next-sanity";
+import { ImageResponse } from "next/og";
+
+import { client } from "@/lib/sanity.client";
+
 export const runtime = "edge";
 
 export const contentType = "image/png";

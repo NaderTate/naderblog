@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Image as NUIImage } from "@nextui-org/react";
 
 import urlFor from "@/lib/urlFor";
 
@@ -12,14 +13,15 @@ function PostCard({ post }: Props) {
     <Link href={`/articles/${post?.slug?.current}`} key={post._id}>
       <div>
         <div className="relative hover:scale-[1.02] transition-transform shadow-[0px_1px_10px_0px_#667eea] rounded-md">
-          <Image
+          <NUIImage
+            as={Image}
             width={1069}
             height={611}
             className="object-contain rounded-md"
             src={urlFor(post.mainImage).url()}
             alt={post.title}
           />
-          <div className="absolute w-full bottom-0 bg-opacity-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-white px-5 py-2 flex justify-between items-center">
+          <div className="absolute w-full bottom-0 bg-opacity-20 z-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-white px-5 py-2 flex justify-between items-center">
             <div>
               <p className="line-clamp-1"> {post.title}</p>
 

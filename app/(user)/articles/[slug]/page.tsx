@@ -76,7 +76,7 @@ async function page({ params: { slug } }: { params: { slug: string } }) {
   const relatedPosts: Post[] = await client.fetch(
     groq`*[_type == "post" && count((categories[]->slug.current)[@ in $categories]) > 0 && slug.current != $slug ]{
         ...,categories[]->,
-    } | order(_createdAt desc) [0...3]`,
+    } | order(_createdAt desc) [0...4]`,
     {
       categories: post.categories.map((category) => category.slug.current),
       slug: post.slug.current,
@@ -85,7 +85,7 @@ async function page({ params: { slug } }: { params: { slug: string } }) {
   return (
     <>
       <Banner post={{ ...post }} />
-      <div className="whitespace-pre-line">
+      <div className="whitespace-pre-line max-w-3xl leading-10">
         <PortableText value={post.body} components={RichTextComponents} />
       </div>
       {relatedPosts.length > 0 && (

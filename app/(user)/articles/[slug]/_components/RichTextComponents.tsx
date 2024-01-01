@@ -4,12 +4,13 @@ import Image from "next/image";
 
 import urlFor from "@/lib/urlFor";
 import "prismjs/themes/prism-coy.css";
+import { Code } from "@nextui-org/react";
 
 export const RichTextComponents = {
   types: {
-    image: ({ value }: any) => {
+    image: ({ value }: { value: { asset: { _ref: string }; alt: string } }) => {
       return (
-        <div className="w-full md:w-3/4 m-auto my-3 ">
+        <div className="w-full md:w-3/4 my-5 ">
           <Image
             width={0}
             height={0}
@@ -28,7 +29,7 @@ export const RichTextComponents = {
       value: { code: string; language: string; filename: string };
     }) => {
       return (
-        <pre className="dark:bg-gray-900 bg-gray-100 p-3 my-2 rounded-md overflow-auto ">
+        <pre className="bg-gray-100 p-3 my-2 rounded-md overflow-auto ">
           {value.filename && (
             <div className="text-xs text-gray-500">{value.filename}</div>
           )}
@@ -92,11 +93,11 @@ export const RichTextComponents = {
         </Link>
       );
     },
-    code: ({ children }: any) => {
+    code: ({ children }: { children: React.ReactNode }) => {
       return (
-        <code className="bg-gray-200 dark:bg-slate-700 rounded-md px-1">
+        <Code className="bg-gray-200 dark:bg-slate-700 rounded-md px-1">
           {children}
-        </code>
+        </Code>
       );
     },
   },
