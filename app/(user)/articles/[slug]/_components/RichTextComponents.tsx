@@ -1,10 +1,11 @@
-import Prism from "prismjs";
 import Link from "next/link";
 import Image from "next/image";
+import { Code } from "@nextui-org/react";
+import { Snippet } from "@nextui-org/react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { vs } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 import urlFor from "@/lib/urlFor";
-import "prismjs/themes/prism-coy.css";
-import { Code } from "@nextui-org/react";
 
 export const RichTextComponents = {
   types: {
@@ -16,7 +17,7 @@ export const RichTextComponents = {
             height={0}
             sizes="100vw"
             style={{ width: "100%", height: "auto" }}
-            className="object-contain  max-h-[80vh]"
+            className="object-contain max-h-[80vh] rounded-md"
             src={urlFor(value.asset).url()}
             alt={value.alt}
           />
@@ -29,20 +30,33 @@ export const RichTextComponents = {
       value: { code: string; language: string; filename: string };
     }) => {
       return (
-        <pre className="bg-gray-100 p-3 my-2 rounded-md overflow-auto ">
+        <div className="bg-gray-100 p-3 w-fit my-2 rounded-md">
           {value.filename && (
-            <div className="text-xs text-gray-500">{value.filename}</div>
+            <p className="text-xs text-gray-500 my-2">{value.filename}</p>
           )}
-          <code
-            dangerouslySetInnerHTML={{
-              __html: Prism.highlight(
-                value.code,
-                Prism.languages[value.language],
-                value.language
-              ),
+          <Snippet
+            variant="flat"
+            symbol={null}
+            className="relative p-0"
+            codeString={value.code}
+            classNames={{
+              copyButton: "absolute top-2 right-2",
             }}
-          />
-        </pre>
+          >
+            <SyntaxHighlighter
+              customStyle={{
+                borderRadius: "0.5rem",
+                backgroundColor: "#fffff",
+              }}
+              language={value.language}
+              style={vs}
+              showLineNumbers
+              wrapLongLines
+            >
+              {value.code}
+            </SyntaxHighlighter>
+          </Snippet>
+        </div>
       );
     },
   },

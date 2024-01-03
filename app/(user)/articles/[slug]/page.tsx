@@ -72,7 +72,6 @@ async function page({ params: { slug } }: { params: { slug: string } }) {
     }`;
 
   const post: Post = await client.fetch(query, { slug });
-  console.log(post);
   const relatedPosts: Post[] = await client.fetch(
     groq`*[_type == "post" && count((categories[]->slug.current)[@ in $categories]) > 0 && slug.current != $slug ]{
         ...,categories[]->,
