@@ -11,12 +11,12 @@ type Props = {
 function PostCard({ post }: Props) {
   return (
     <Link href={`/articles/${post?.slug?.current}`} key={post._id}>
-      <div className="relative hover:scale-[1.02] transition-transform shadow-[0px_1px_10px_0px_#667eea] rounded-md">
+      <div className="relative group max-w-full overflow-hidden shadow-[0px_1px_10px_0px_#667eea] rounded-md">
         <NUIImage
           as={Image}
           width={1069}
           height={611}
-          className="object-contain rounded-md"
+          className="object-contain rounded-md group-hover:scale-[1.02] transition-transform"
           src={urlFor(post.mainImage).url()}
           alt={post.title}
         />
