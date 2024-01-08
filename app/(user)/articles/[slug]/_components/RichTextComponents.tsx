@@ -1,6 +1,6 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Code } from "@nextui-org/react";
+// import Image from "next/image";
+import { Code, Image as NUIImage } from "@nextui-org/react";
 import { Snippet } from "@nextui-org/react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { vs } from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -12,7 +12,7 @@ export const RichTextComponents = {
     image: ({ value }: { value: { asset: { _ref: string }; alt: string } }) => {
       return (
         <div className="w-full md:w-3/4 my-5 ">
-          <Image
+          <NUIImage
             width={0}
             height={0}
             sizes="100vw"

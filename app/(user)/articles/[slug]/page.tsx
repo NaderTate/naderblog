@@ -1,12 +1,12 @@
 import { groq } from "next-sanity";
 import { PortableText } from "@portabletext/react";
 
+import Posts from "@/components/Posts";
+import Banner from "./_components/Banner";
 import { RichTextComponents } from "./_components/RichTextComponents";
 
 import urlFor from "@/lib/urlFor";
 import { client } from "@/lib/sanity.client";
-import Banner from "./_components/Banner";
-import Posts from "@/components/Posts";
 
 export const revalidate = 60;
 
